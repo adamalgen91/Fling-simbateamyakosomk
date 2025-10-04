@@ -10,201 +10,346 @@ screenGui.Parent = coreGui
 screenGui.ResetOnSpawn = false
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "Main"
-mainFrame.Size = UDim2.new(0, 360, 0, 220)
-mainFrame.Position = UDim2.new(0.5, -180, 0.5, -110)
+mainFrame.Size = UDim2.new(0, 380, 0, 240)
+mainFrame.Position = UDim2.new(0.5, -190, 0.5, -120)
 mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
-mainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+mainFrame.BackgroundColor3 = Color3.fromRGB(18,18,20)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
 local corner = Instance.new("UICorner", mainFrame)
-corner.CornerRadius = UDim.new(0, 8)
+corner.CornerRadius = UDim.new(0, 14)
 local stroke = Instance.new("UIStroke", mainFrame)
 stroke.Thickness = 2
 stroke.Color = Color3.fromRGB(255,255,255)
+local uiGradient = Instance.new("UIGradient", mainFrame)
+uiGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(16,16,18)), ColorSequenceKeypoint.new(1, Color3.fromRGB(30,30,36))}
+uiGradient.Rotation = 270
 local topBar = Instance.new("Frame")
 topBar.Parent = mainFrame
-topBar.Size = UDim2.new(1,0,0,36)
-topBar.BackgroundTransparency = 0.08
+topBar.Size = UDim2.new(1,0,0,40)
+topBar.BackgroundTransparency = 0.06
 topBar.BorderSizePixel = 0
 topBar.Position = UDim2.new(0,0,0,0)
 local topLabel = Instance.new("TextLabel")
 topLabel.Parent = topBar
-topLabel.Size = UDim2.new(1,-8,1,-6)
-topLabel.Position = UDim2.new(0,4,0,3)
+topLabel.Size = UDim2.new(1,-12,1,-8)
+topLabel.Position = UDim2.new(0,6,0,4)
 topLabel.BackgroundTransparency = 1
 topLabel.Text = "BY: SIMBA"
 topLabel.TextScaled = true
 topLabel.Font = Enum.Font.GothamBold
-topLabel.TextColor3 = Color3.fromRGB(255,255,255)
+topLabel.TextColor3 = Color3.fromRGB(230,230,230)
 topLabel.TextXAlignment = Enum.TextXAlignment.Left
 local title = Instance.new("TextLabel")
 title.Parent = mainFrame
-title.Size = UDim2.new(1,-16,0,22)
-title.Position = UDim2.new(0,8,0,44)
+title.Size = UDim2.new(1,-24,0,24)
+title.Position = UDim2.new(0,12,0,50)
 title.BackgroundTransparency = 1
-title.Text = "☠️ chatspam😈"
-title.TextScaled = false
-title.Font = Enum.Font.Gotham
-title.TextColor3 = Color3.fromRGB(240,240,240)
+title.Text = "☠️ chatspam 😈"
+title.Font = Enum.Font.GothamBold
+title.TextColor3 = Color3.fromRGB(245,245,245)
 title.TextSize = 18
 title.TextXAlignment = Enum.TextXAlignment.Left
 local box = Instance.new("TextBox")
 box.Parent = mainFrame
-box.Size = UDim2.new(1,-16,0,44)
-box.Position = UDim2.new(0,8,0,72)
-box.BackgroundColor3 = Color3.fromRGB(30,30,30)
-box.TextColor3 = Color3.fromRGB(255,255,255)
+box.Size = UDim2.new(1,-76,0,48)
+box.Position = UDim2.new(0,12,0,82)
+box.BackgroundColor3 = Color3.fromRGB(28,28,32)
+box.TextColor3 = Color3.fromRGB(245,245,245)
 box.Text = ""
 box.PlaceholderText = "اكتب النص.."
 box.Font = Enum.Font.Gotham
 box.TextWrapped = true
-box.TextScaled = false
 box.TextSize = 18
 box.ClearTextOnFocus = false
 local boxCorner = Instance.new("UICorner", box)
-boxCorner.CornerRadius = UDim.new(0,6)
+boxCorner.CornerRadius = UDim.new(0,8)
 local boxStroke = Instance.new("UIStroke", box)
 boxStroke.Thickness = 1
-boxStroke.Color = Color3.fromRGB(200,200,200)
+boxStroke.Color = Color3.fromRGB(120,120,130)
+local copyBtn = Instance.new("TextButton")
+copyBtn.Parent = mainFrame
+copyBtn.Size = UDim2.new(0,52,0,40)
+copyBtn.Position = UDim2.new(1,-64,0,86)
+copyBtn.AnchorPoint = Vector2.new(0,0)
+copyBtn.BackgroundColor3 = Color3.fromRGB(40,40,44)
+copyBtn.Text = "نسخ"
+copyBtn.Font = Enum.Font.GothamBold
+copyBtn.TextSize = 16
+copyBtn.TextColor3 = Color3.fromRGB(255,255,255)
+local copyCorner = Instance.new("UICorner", copyBtn)
+copyCorner.CornerRadius = UDim.new(0,8)
+local copyStroke = Instance.new("UIStroke", copyBtn)
+copyStroke.Thickness = 1
+copyStroke.Color = Color3.fromRGB(200,200,210)
 local btnContainer = Instance.new("Frame")
 btnContainer.Parent = mainFrame
-btnContainer.Size = UDim2.new(1,-16,0,48)
-btnContainer.Position = UDim2.new(0,8,1,-56)
+btnContainer.Size = UDim2.new(1,-24,0,60)
+btnContainer.Position = UDim2.new(0,12,1,-72)
 btnContainer.BackgroundTransparency = 1
 local sendOnceBtn = Instance.new("TextButton")
 sendOnceBtn.Parent = btnContainer
-sendOnceBtn.Size = UDim2.new(0.48,0,1,0)
+sendOnceBtn.Size = UDim2.new(0.32,0,1,0)
 sendOnceBtn.Position = UDim2.new(0,0,0,0)
 sendOnceBtn.Text = "إرسال مرة"
 sendOnceBtn.Font = Enum.Font.GothamBold
 sendOnceBtn.TextScaled = true
-sendOnceBtn.BackgroundColor3 = Color3.fromRGB(50,120,200)
+sendOnceBtn.BackgroundColor3 = Color3.fromRGB(25,160,255)
 sendOnceBtn.TextColor3 = Color3.fromRGB(255,255,255)
 local sendOnceCorner = Instance.new("UICorner", sendOnceBtn)
-sendOnceCorner.CornerRadius = UDim.new(0,6)
+sendOnceCorner.CornerRadius = UDim.new(0,10)
 local sendFiveBtn = Instance.new("TextButton")
 sendFiveBtn.Parent = btnContainer
-sendFiveBtn.Size = UDim2.new(0.48,0,1,0)
-sendFiveBtn.Position = UDim2.new(0.52,0,0,0)
-sendFiveBtn.Text = "إرسال 5 (محدود)"
+sendFiveBtn.Size = UDim2.new(0.32,0,1,0)
+sendFiveBtn.Position = UDim2.new(0.34,0,0,0)
+sendFiveBtn.Text = "إرسال 5"
 sendFiveBtn.Font = Enum.Font.GothamBold
 sendFiveBtn.TextScaled = true
-sendFiveBtn.BackgroundColor3 = Color3.fromRGB(200,80,80)
+sendFiveBtn.BackgroundColor3 = Color3.fromRGB(230,70,80)
 sendFiveBtn.TextColor3 = Color3.fromRGB(255,255,255)
 local sendFiveCorner = Instance.new("UICorner", sendFiveBtn)
-sendFiveCorner.CornerRadius = UDim.new(0,6)
+sendFiveCorner.CornerRadius = UDim.new(0,10)
+local sendTenBtn = Instance.new("TextButton")
+sendTenBtn.Parent = btnContainer
+sendTenBtn.Size = UDim2.new(0.32,0,1,0)
+sendTenBtn.Position = UDim2.new(0.68,0,0,0)
+sendTenBtn.Text = "إرسال 10"
+sendTenBtn.Font = Enum.Font.GothamBold
+sendTenBtn.TextScaled = true
+sendTenBtn.BackgroundColor3 = Color3.fromRGB(90,200,120)
+sendTenBtn.TextColor3 = Color3.fromRGB(20,20,20)
+local sendTenCorner = Instance.new("UICorner", sendTenBtn)
+sendTenCorner.CornerRadius = UDim.new(0,10)
 local status = Instance.new("TextLabel")
 status.Parent = mainFrame
-status.Size = UDim2.new(1,-16,0,18)
-status.Position = UDim2.new(0,8,0,124)
+status.Size = UDim2.new(1,-24,0,18)
+status.Position = UDim2.new(0,12,0,136)
 status.BackgroundTransparency = 1
 status.Text = "الحالة: جاهز"
-status.TextScaled = false
 status.Font = Enum.Font.Gotham
-status.TextColor3 = Color3.fromRGB(200,200,200)
+status.TextColor3 = Color3.fromRGB(195,195,195)
 status.TextSize = 14
 status.TextXAlignment = Enum.TextXAlignment.Left
 local dragging = false
 local dragInput, dragStart, startPos
+local locked = false
 local function update(input)
-	local delta = input.Position - dragStart
-	mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+ local delta = input.Position - dragStart
+ mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 end
 mainFrame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-		dragging = true
-		dragStart = input.Position
-		startPos = mainFrame.Position
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
+ if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+  dragging = true
+  dragStart = input.Position
+  startPos = mainFrame.Position
+  input.Changed:Connect(function()
+   if input.UserInputState == Enum.UserInputState.End then
+    dragging = false
+   end
+  end)
+ end
 end)
 mainFrame.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-		dragInput = input
-	end
+ if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+  dragInput = input
+ end
 end)
 UserInputService.InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		update(input)
-	end
+ if input == dragInput and dragging and not locked then
+  update(input)
+ end
+end)
+local lockBtn = Instance.new("TextButton", topBar)
+lockBtn.Size = UDim2.new(0,34,0,34)
+lockBtn.Position = UDim2.new(1,-44,0,3)
+lockBtn.AnchorPoint = Vector2.new(0,0)
+lockBtn.BackgroundColor3 = Color3.fromRGB(200,50,50)
+lockBtn.Text = "X"
+lockBtn.Font = Enum.Font.GothamBold
+lockBtn.TextSize = 18
+lockBtn.TextColor3 = Color3.fromRGB(255,255,255)
+local lockCorner = Instance.new("UICorner", lockBtn)
+lockCorner.CornerRadius = UDim.new(0,10)
+local lockStroke = Instance.new("UIStroke", lockBtn)
+lockStroke.Thickness = 1
+lockStroke.Color = Color3.fromRGB(255,120,120)
+local openBtn = Instance.new("TextButton")
+openBtn.Parent = screenGui
+openBtn.Size = UDim2.new(0,140,0,42)
+openBtn.Position = UDim2.new(0.85, -70, 0.9, -20)
+openBtn.AnchorPoint = Vector2.new(0.5,0.5)
+openBtn.BackgroundColor3 = Color3.fromRGB(40,110,220)
+openBtn.Text = "OPEN script"
+openBtn.Font = Enum.Font.GothamBold
+openBtn.TextSize = 16
+openBtn.TextColor3 = Color3.fromRGB(255,255,255)
+local openCorner = Instance.new("UICorner", openBtn)
+openCorner.CornerRadius = UDim.new(0,12)
+local openStroke = Instance.new("UIStroke", openBtn)
+openStroke.Thickness = 1
+openStroke.Color = Color3.fromRGB(255,255,255)
+openBtn.Visible = false
+local openDragging = false
+local openDragInput, openDragStart, openStartPos
+local function openUpdate(input)
+ local delta = input.Position - openDragStart
+ openBtn.Position = UDim2.new(openStartPos.X.Scale, openStartPos.X.Offset + delta.X, openStartPos.Y.Scale, openStartPos.Y.Offset + delta.Y)
+end
+openBtn.InputBegan:Connect(function(input)
+ if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+  openDragging = true
+  openDragStart = input.Position
+  openStartPos = openBtn.Position
+  input.Changed:Connect(function()
+   if input.UserInputState == Enum.UserInputState.End then
+    openDragging = false
+   end
+  end)
+ end
+end)
+openBtn.InputChanged:Connect(function(input)
+ if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+  openDragInput = input
+ end
+end)
+UserInputService.InputChanged:Connect(function(input)
+ if input == openDragInput and openDragging then
+  openUpdate(input)
+ end
+end)
+lockBtn.MouseButton1Click:Connect(function()
+ mainFrame.Visible = false
+ openBtn.Visible = true
+end)
+openBtn.MouseButton1Click:Connect(function()
+ mainFrame.Visible = true
+ openBtn.Visible = false
 end)
 local function safeSend(message)
-	if not message or message == "" then
-		return false, "Empty"
-	end
-	local success, err = pcall(function()
-		local ch = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
-		if ch and ch.SendAsync then
-			ch:SendAsync(message)
-		else
-			local channels = TextChatService.TextChannels:GetChildren()
-			for _,c in ipairs(channels) do
-				if c and c.SendAsync then
-					c:SendAsync(message)
-					return
-				end
-			end
-		end
-	end)
-	return success, err
+ if not message or message == "" then
+  return false, "Empty"
+ end
+ local success, err = pcall(function()
+  local ch = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
+  if ch and ch.SendAsync then
+   ch:SendAsync(message)
+  else
+   local channels = TextChatService.TextChannels:GetChildren()
+   for _,c in ipairs(channels) do
+    if c and c.SendAsync then
+     c:SendAsync(message)
+     return
+    end
+   end
+  end
+ end)
+ return success, err
 end
 sendOnceBtn.MouseButton1Click:Connect(function()
-	local msg = box.Text
-	status.Text = "الحالة: إرسال رسالة..."
-	local ok, err = safeSend(msg)
-	if ok then
-		status.Text = "الحالة: تم إرسال رسالة واحدة."
-	else
-		status.Text = "الحالة: فشل الإرسال (" .. tostring(err) .. ")"
-	end
+ local msg = box.Text
+ status.Text = "الحالة: إرسال رسالة..."
+ local ok, err = safeSend(msg)
+ if ok then
+  status.Text = "الحالة: تم إرسال رسالة واحدة."
+ else
+  status.Text = "الحالة: فشل الإرسال (" .. tostring(err) .. ")"
+ end
 end)
 local delayBetween = 10
+local sendFiveDelay = 1
+local sendTenDelay = 3
 local maxMessagesPerUse = 5
 local recentSends = {}
 local function canSendNow()
-	local now = tick()
-	local window = 600
-	local allowedInWindow = 10
-	for i = #recentSends, 1, -1 do
-		if recentSends[i] < now - window then
-			table.remove(recentSends, i)
-		end
-	end
-	return #recentSends < allowedInWindow
+ local now = tick()
+ local window = 600
+ local allowedInWindow = 10
+ for i = #recentSends, 1, -1 do
+  if recentSends[i] < now - window then
+   table.remove(recentSends, i)
+  end
+ end
+ return #recentSends < allowedInWindow
 end
 sendFiveBtn.MouseButton1Click:Connect(function()
-	local text = box.Text
-	if text == "" then
-		status.Text = "الحالة: الصندوق فارغ."
-		return
-	end
-	if not canSendNow() then
-		status.Text = "الحالة: تم الوصول للحد المسموح به مؤقتًا. انتظر قليلاً."
-		return
-	end
-	status.Text = "الحالة: بدء محاولة إرسال حتى " .. tostring(maxMessagesPerUse) .. " رسائل (مع تأخير)."
-	spawn(function()
-		for i = 1, maxMessagesPerUse do
-			if not canSendNow() then
-				status.Text = "الحالة: توقفت — تم الوصول للحد المسموح به."
-				return
-			end
-			local ok, err = safeSend(text)
-			if ok then
-				table.insert(recentSends, tick())
-				status.Text = string.format("الحالة: أرسلت %d/%d", i, maxMessagesPerUse)
-			else
-				status.Text = "الحالة: فشل الإرسال (" .. tostring(err) .. ")"
-				return
-			end
-			if i < maxMessagesPerUse then
-				wait(delayBetween)
-			end
-		end
-		status.Text = "الحالة: انتهت عملية الإرسال (الآمنة)."
-	end)
+ local text = box.Text
+ if text == "" then
+  status.Text = "الحالة: الصندوق فارغ."
+  return
+ end
+ if not canSendNow() then
+  status.Text = "الحالة: تم الوصول للحد المسموح به مؤقتًا. انتظر قليلاً."
+  return
+ end
+ status.Text = "الحالة: بدء محاولة إرسال حتى " .. tostring(maxMessagesPerUse) .. " رسائل."
+ spawn(function()
+  for i = 1, maxMessagesPerUse do
+   if not canSendNow() then
+    status.Text = "الحالة: توقفت — تم الوصول للحد المسموح به."
+    return
+   end
+   local ok, err = safeSend(text)
+   if ok then
+    table.insert(recentSends, tick())
+    status.Text = string.format("الحالة: أرسلت %d/%d", i, maxMessagesPerUse)
+   else
+    status.Text = "الحالة: فشل الإرسال (" .. tostring(err) .. ")"
+    return
+   end
+   if i < maxMessagesPerUse then
+    wait(sendFiveDelay)
+   end
+  end
+  status.Text = "الحالة: انتهت عملية الإرسال (الآمنة)."
+ end)
 end)
+sendTenBtn.MouseButton1Click:Connect(function()
+ local text = box.Text
+ if text == "" then
+  status.Text = "الحالة: الصندوق فارغ."
+  return
+ end
+ if not canSendNow() then
+  status.Text = "الحالة: تم الوصول للحد المسموح به مؤقتًا. انتظر قليلاً."
+  return
+ end
+ status.Text = "الحالة: بدء محاولة إرسال حتى 10 رسائل."
+ spawn(function()
+  for i = 1, 10 do
+   if not canSendNow() then
+    status.Text = "الحالة: توقفت — تم الوصول للحد المسموح به."
+    return
+   end
+   local ok, err = safeSend(text)
+   if ok then
+    table.insert(recentSends, tick())
+    status.Text = string.format("الحالة: أرسلت %d/%d", i, 10)
+   else
+    status.Text = "الحالة: فشل الإرسال (" .. tostring(err) .. ")"
+    return
+   end
+   if i < 10 then
+    wait(sendTenDelay)
+   end
+  end
+  status.Text = "الحالة: انتهت عملية الإرسال (الآمنة)."
+ end)
+end)
+copyBtn.MouseButton1Click:Connect(function()
+ local txt = box.Text or ""
+ local ok, err = pcall(function()
+  if setclipboard then
+   setclipboard(txt)
+  else
+   error("no setclipboard")
+  end
+ end)
+ if ok then
+  status.Text = "الحالة: تم نسخ النص."
+ else
+  status.Text = "الحالة: النسخ غير مدعوم هنا."
+ end
+end)
+TweenService:Create(mainFrame, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 380, 0, 240)}):Play()
+wait(0.12)
+TweenService:Create(mainFrame, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0, 360, 0, 220)}):Play()

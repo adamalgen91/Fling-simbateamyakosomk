@@ -137,7 +137,7 @@ local autoOn=false
 local slowOn=false
 local dark=true
 local echoOn=false
-local playlist={142376088,1848354532,5355292329}
+local playlist={7609175072,101464226213292,76221024204234,98509241790002,118074256196452,106169760792625}
 local index=1
 
 local function load(id)

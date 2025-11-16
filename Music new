@@ -110,14 +110,14 @@ local function newBtn(text,pos,bg)
     return b
 end
 
-local play=newBtn("Play",UDim2.new(0.05,0,0.7,0),Color3.fromRGB(30,120,30))
-local stop=newBtn("Stop",UDim2.new(0.5,0,0.7,0),Color3.fromRGB(120,30,30))
-local auto=newBtn("Auto: OFF",UDim2.new(0.05,0,0.82,0),Color3.fromRGB(150,20,20))
-local toggle=newBtn("Dark Mode",UDim2.new(0.5,0,0.82,0),Color3.fromRGB(40,40,40))
-local echoBtn=newBtn("Echo: OFF",UDim2.new(0.05,0,0.9,0),Color3.fromRGB(150,20,20))
-local slowBtn=newBtn("Slowed: OFF",UDim2.new(0.5,0,0.9,0),Color3.fromRGB(150,20,20))
-local nextBtn=newBtn("Next >>",UDim2.new(0.05,0,1.02,0),Color3.fromRGB(20,100,200))
-local prevBtn=newBtn("<< Prev",UDim2.new(0.5,0,1.02,0),Color3.fromRGB(200,100,20))
+local play=newBtn("تشغيل",UDim2.new(0.05,0,0.7,0),Color3.fromRGB(30,120,30))
+local stop=newBtn("توقف",UDim2.new(0.5,0,0.7,0),Color3.fromRGB(120,30,30))
+local auto=newBtn("وضع تلقائي: غير مفعل",UDim2.new(0.05,0,0.82,0),Color3.fromRGB(150,20,20))
+local toggle=newBtn("تفعيل شكل دارك او لايت",UDim2.new(0.5,0,0.82,0),Color3.fromRGB(40,40,40))
+local echoBtn=newBtn("صدي صوت: غير مفعل",UDim2.new(0.05,0,0.9,0),Color3.fromRGB(150,20,20))
+local slowBtn=newBtn("ببطئ: غير مفعل",UDim2.new(0.5,0,0.9,0),Color3.fromRGB(150,20,20))
+local nextBtn=newBtn("تبديل بعد >>",UDim2.new(0.05,0,1.02,0),Color3.fromRGB(20,100,200))
+local prevBtn=newBtn("<< تبديل قبل",UDim2.new(0.5,0,1.02,0),Color3.fromRGB(200,100,20))
 
 local vis=Instance.new("Frame",main)
 vis.Size=UDim2.new(0.9,0,0,40)
@@ -151,7 +151,7 @@ local function load(id)
         name.Text=pd.Name or ""
         img.Image="rbxassetid://"..id
     else
-        name.Text="Error"
+        name.Text="خطا"
     end
     return true
 end
@@ -166,7 +166,7 @@ end)
 
 auto.MouseButton1Click:Connect(function()
     autoOn=not autoOn
-    auto.Text=autoOn and "Auto: ON" or "Auto: OFF"
+    auto.Text=autoOn and "وضع تلقائي: مفعل" or "وضع تلقائي: غير مفعل"
     auto.BackgroundColor3=autoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 
@@ -181,14 +181,14 @@ end)
 echoBtn.MouseButton1Click:Connect(function()
     echoOn=not echoOn
     echo.Enabled=echoOn
-    echoBtn.Text=echoOn and "Echo: ON" or "Echo: OFF"
+    echoBtn.Text=echoOn and "صدي صوت: مفعل" or "صدي صوت: غير مفعل"
     echoBtn.BackgroundColor3=echoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 
 slowBtn.MouseButton1Click:Connect(function()
     slowOn=not slowOn
     s.PlaybackSpeed=slowOn and 0.6 or 1
-    slowBtn.Text=slowOn and "Slowed: ON" or "Slowed: OFF"
+    slowBtn.Text=slowOn and "ببطئ: مفعل" or "ببطئ: غير مفعل"
     slowBtn.BackgroundColor3=slowOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 

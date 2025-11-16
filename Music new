@@ -1,0 +1,243 @@
+local player=game.Players.LocalPlayer
+local gui=Instance.new("ScreenGui",player:WaitForChild("PlayerGui"))
+
+local reopen=Instance.new("TextButton",gui)
+reopen.Size=UDim2.new(0,140,0,45)
+reopen.Position=UDim2.new(0.02,0,0.4,0)
+reopen.Text="Open Player"
+reopen.BackgroundColor3=Color3.fromRGB(20,150,20)
+reopen.TextScaled=true
+reopen.Visible=false
+local reopenStroke=Instance.new("UIStroke",reopen)
+reopenStroke.Thickness=2
+reopenStroke.Color=Color3.fromRGB(0,255,0)
+local reopenCorner=Instance.new("UICorner",reopen)
+reopenCorner.CornerRadius=UDim.new(0,12)
+
+local main=Instance.new("Frame",gui)
+main.Size=UDim2.new(0,500,0,550)
+main.Position=UDim2.new(0.5,-250,0.5,-275)
+main.BackgroundColor3=Color3.fromRGB(25,25,25)
+main.BorderSizePixel=0
+main.Active=true
+main.Draggable=true
+local mainCorner=Instance.new("UICorner",main)
+mainCorner.CornerRadius=UDim.new(0,25)
+local mainStroke=Instance.new("UIStroke",main)
+mainStroke.Thickness=3
+mainStroke.Color=Color3.fromRGB(0,255,0)
+
+local title=Instance.new("TextLabel",main)
+title.Size=UDim2.new(1,0,0,50)
+title.Text="by simba"
+title.BackgroundTransparency=1
+title.TextScaled=true
+title.TextColor3=Color3.fromRGB(255,255,0)
+local titleStroke=Instance.new("UIStroke",title)
+titleStroke.Thickness=1
+titleStroke.Color=Color3.fromRGB(255,0,0)
+
+local close=Instance.new("TextButton",main)
+close.Size=UDim2.new(0,45,0,45)
+close.Position=UDim2.new(1,-55,0,5)
+close.Text="X"
+close.TextScaled=true
+close.BackgroundColor3=Color3.fromRGB(180,20,20)
+local closeCorner=Instance.new("UICorner",close)
+closeCorner.CornerRadius=UDim.new(0,12)
+local closeStroke=Instance.new("UIStroke",close)
+closeStroke.Thickness=2
+closeStroke.Color=Color3.fromRGB(255,255,255)
+
+local txt=Instance.new("TextBox",main)
+txt.Size=UDim2.new(0.9,0,0,45)
+txt.Position=UDim2.new(0.05,0,0.13,0)
+txt.PlaceholderText="Enter ID"
+txt.Text=""
+txt.TextScaled=true
+txt.BackgroundColor3=Color3.fromRGB(50,50,50)
+txt.TextColor3=Color3.fromRGB(255,255,255)
+local txtCorner=Instance.new("UICorner",txt)
+txtCorner.CornerRadius=UDim.new(0,15)
+local txtStroke=Instance.new("UIStroke",txt)
+txtStroke.Thickness=2
+txtStroke.Color=Color3.fromRGB(0,255,0)
+
+local img=Instance.new("ImageLabel",main)
+img.Size=UDim2.new(0,140,0,140)
+img.Position=UDim2.new(0.03,0,0.28,0)
+img.BackgroundColor3=Color3.fromRGB(50,50,50)
+local imgCorner=Instance.new("UICorner",img)
+imgCorner.CornerRadius=UDim.new(0,20)
+local imgStroke=Instance.new("UIStroke",img)
+imgStroke.Thickness=2
+imgStroke.Color=Color3.fromRGB(0,255,0)
+
+local name=Instance.new("TextLabel",main)
+name.Size=UDim2.new(0.6,0,0,50)
+name.Position=UDim2.new(0.38,0,0.28,0)
+name.BackgroundTransparency=1
+name.TextScaled=true
+name.TextColor3=Color3.fromRGB(0,255,255)
+local nameStroke=Instance.new("UIStroke",name)
+nameStroke.Thickness=1
+nameStroke.Color=Color3.fromRGB(255,0,255)
+
+local timeline=Instance.new("Frame",main)
+timeline.Size=UDim2.new(0.9,0,0,20)
+timeline.Position=UDim2.new(0.05,0,0.62,0)
+timeline.BackgroundColor3=Color3.fromRGB(50,50,50)
+local timelineCorner=Instance.new("UICorner",timeline)
+timelineCorner.CornerRadius=UDim.new(0,12)
+local p=Instance.new("Frame",timeline)
+p.Size=UDim2.new(0,0,1,0)
+p.BackgroundColor3=Color3.fromRGB(0,255,0)
+local pCorner=Instance.new("UICorner",p)
+pCorner.CornerRadius=UDim.new(0,10)
+
+local function newBtn(text,pos,bg)
+    local b=Instance.new("TextButton",main)
+    b.Size=UDim2.new(0.45,0,0,45)
+    b.Position=pos
+    b.Text=text
+    b.TextScaled=true
+    b.BackgroundColor3=bg
+    local c=Instance.new("UICorner",b)
+    c.CornerRadius=UDim.new(0,15)
+    local s=Instance.new("UIStroke",b)
+    s.Thickness=2
+    s.Color=Color3.fromRGB(0,255,0)
+    return b
+end
+
+local play=newBtn("Play",UDim2.new(0.05,0,0.7,0),Color3.fromRGB(30,120,30))
+local stop=newBtn("Stop",UDim2.new(0.5,0,0.7,0),Color3.fromRGB(120,30,30))
+local auto=newBtn("Auto: OFF",UDim2.new(0.05,0,0.82,0),Color3.fromRGB(150,20,20))
+local toggle=newBtn("Dark Mode",UDim2.new(0.5,0,0.82,0),Color3.fromRGB(40,40,40))
+local echoBtn=newBtn("Echo: OFF",UDim2.new(0.05,0,0.9,0),Color3.fromRGB(150,20,20))
+local slowBtn=newBtn("Slowed: OFF",UDim2.new(0.5,0,0.9,0),Color3.fromRGB(150,20,20))
+local nextBtn=newBtn("Next >>",UDim2.new(0.05,0,1.02,0),Color3.fromRGB(20,100,200))
+local prevBtn=newBtn("<< Prev",UDim2.new(0.5,0,1.02,0),Color3.fromRGB(200,100,20))
+
+local vis=Instance.new("Frame",main)
+vis.Size=UDim2.new(0.9,0,0,40)
+vis.Position=UDim2.new(0.05,0,0.985,0)
+vis.BackgroundColor3=Color3.fromRGB(20,20,20)
+local visCorner=Instance.new("UICorner",vis)
+visCorner.CornerRadius=UDim.new(0,12)
+
+local s=Instance.new("Sound",game.SoundService)
+s.Volume=1
+local echo=Instance.new("ReverbSoundEffect",s)
+echo.DecayTime=2
+echo.Density=1
+echo.Enabled=false
+
+local autoOn=false
+local slowOn=false
+local dark=true
+local echoOn=false
+local playlist={142376088,1848354532,5355292329}
+local index=1
+
+local function load(id)
+    local x=tonumber(id)
+    if not x then txt.Text="كود خطأ" return false end
+    s.SoundId="rbxassetid://"..id
+    local ok,pd=pcall(function()
+        return game:GetService("MarketplaceService"):GetProductInfo(id)
+    end)
+    if ok then
+        name.Text=pd.Name or ""
+        img.Image="rbxassetid://"..id
+    else
+        name.Text="Error"
+    end
+    return true
+end
+
+play.MouseButton1Click:Connect(function()
+    if load(txt.Text) then s:Play() end
+end)
+
+stop.MouseButton1Click:Connect(function()
+    s:Stop()
+end)
+
+auto.MouseButton1Click:Connect(function()
+    autoOn=not autoOn
+    auto.Text=autoOn and "Auto: ON" or "Auto: OFF"
+    auto.BackgroundColor3=autoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
+end)
+
+toggle.MouseButton1Click:Connect(function()
+    dark=not dark
+    main.BackgroundColor3=dark and Color3.fromRGB(25,25,25) or Color3.fromRGB(230,230,230)
+    title.TextColor3=dark and Color3.fromRGB(255,255,0) or Color3.fromRGB(0,0,0)
+    txt.TextColor3=dark and Color3.fromRGB(255,255,255) or Color3.fromRGB(0,0,0)
+    name.TextColor3=dark and Color3.fromRGB(0,255,255) or Color3.fromRGB(0,0,0)
+end)
+
+echoBtn.MouseButton1Click:Connect(function()
+    echoOn=not echoOn
+    echo.Enabled=echoOn
+    echoBtn.Text=echoOn and "Echo: ON" or "Echo: OFF"
+    echoBtn.BackgroundColor3=echoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
+end)
+
+slowBtn.MouseButton1Click:Connect(function()
+    slowOn=not slowOn
+    s.PlaybackSpeed=slowOn and 0.6 or 1
+    slowBtn.Text=slowOn and "Slowed: ON" or "Slowed: OFF"
+    slowBtn.BackgroundColor3=slowOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
+end)
+
+nextBtn.MouseButton1Click:Connect(function()
+    index=index+1
+    if index>#playlist then index=1 end
+    s.SoundId="rbxassetid://"..playlist[index]
+    s:Play()
+    txt.Text=playlist[index]
+end)
+
+prevBtn.MouseButton1Click:Connect(function()
+    index=index-1
+    if index<1 then index=#playlist end
+    s.SoundId="rbxassetid://"..playlist[index]
+    s:Play()
+    txt.Text=playlist[index]
+end)
+
+close.MouseButton1Click:Connect(function()
+    main.Visible=false
+    reopen.Visible=true
+end)
+
+reopen.MouseButton1Click:Connect(function()
+    main.Visible=true
+    reopen.Visible=false
+end)
+
+game:GetService("RunService").RenderStepped:Connect(function()
+    if s.IsPlaying and s.TimeLength>0 then
+        p.Size=UDim2.new(s.TimePosition/s.TimeLength,0,1,0)
+    else
+        p.Size=UDim2.new(0,0,1,0)
+    end
+    if autoOn and not s.IsPlaying then
+        index=index+1
+        if index>#playlist then index=1 end
+        s.SoundId="rbxassetid://"..playlist[index]
+        s:Play()
+        txt.Text=playlist[index]
+    end
+    for _,v in pairs(vis:GetChildren()) do v:Destroy() end
+    for i=1,8 do
+        local bar=Instance.new("Frame",vis)
+        bar.Size=UDim2.new(0.11,0,math.random(10,100)/100,0)
+        bar.Position=UDim2.new((i-1)*0.12,0,1-bar.Size.Y.Scale,0)
+        bar.BackgroundColor3=Color3.fromRGB(0,255,0)
+        local bc=Instance.new("UICorner",bar)
+        bc.CornerRadius=UDim.new(0,8)
+    end
+end)

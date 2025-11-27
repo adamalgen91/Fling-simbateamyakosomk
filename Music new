@@ -1,5 +1,57 @@
 local player=game.Players.LocalPlayer
 local gui=Instance.new("ScreenGui",player:WaitForChild("PlayerGui"))
+gui.ResetOnSpawn=false
+
+local loading=Instance.new("Frame",gui)
+loading.Size=UDim2.new(1,0,1,0)
+loading.BackgroundColor3=Color3.fromRGB(10,10,10)
+
+local loadingImg=Instance.new("ImageLabel",loading)
+loadingImg.Size=UDim2.new(0.4,0,0.4,0)
+loadingImg.Position=UDim2.new(0.3,0,0.1,0)
+loadingImg.Image="rbxassetid://130741481134490"
+loadingImg.BackgroundTransparency=1
+local loadingCorner=Instance.new("UICorner",loadingImg)
+loadingCorner.CornerRadius=UDim.new(0,25)
+
+local welcome=Instance.new("TextLabel",loading)
+welcome.Size=UDim2.new(1,0,0,80)
+welcome.Position=UDim2.new(0,0,0.52,0)
+welcome.BackgroundTransparency=1
+welcome.TextScaled=true
+welcome.TextColor3=Color3.fromRGB(255,255,255)
+welcome.Text="اهلا بك يا "..player.Name.." مره اخري في سكربت simba music 😈☠️👑"
+
+local loadBar=Instance.new("Frame",loading)
+loadBar.Size=UDim2.new(0.7,0,0,25)
+loadBar.Position=UDim2.new(0.15,0,0.72,0)
+loadBar.BackgroundColor3=Color3.fromRGB(40,40,40)
+local loadCorner=Instance.new("UICorner",loadBar)
+loadCorner.CornerRadius=UDim.new(0,15)
+
+local fill=Instance.new("Frame",loadBar)
+fill.Size=UDim2.new(0,0,1,0)
+fill.BackgroundColor3=Color3.fromRGB(0,255,0)
+local fillCorner=Instance.new("UICorner",fill)
+fillCorner.CornerRadius=UDim.new(0,15)
+
+local loadText=Instance.new("TextLabel",loading)
+loadText.Size=UDim2.new(1,0,0,50)
+loadText.Position=UDim2.new(0,0,0.8,0)
+loadText.BackgroundTransparency=1
+loadText.TextScaled=true
+loadText.TextColor3=Color3.fromRGB(0,255,0)
+loadText.Text="جاري التحميل..."
+
+for i=1,100 do
+    fill.Size=UDim2.new(i/100,0,1,0)
+    loadText.Text="جاري التحميل... "..i.."%"
+    task.wait(0.03)
+end
+
+loadText.Text="تم التحميل"
+task.wait(0.5)
+loading:Destroy()
 
 local reopen=Instance.new("TextButton",gui)
 reopen.Size=UDim2.new(0,140,0,45)
@@ -27,9 +79,33 @@ local mainStroke=Instance.new("UIStroke",main)
 mainStroke.Thickness=3
 mainStroke.Color=Color3.fromRGB(0,255,0)
 
+local playersCount=Instance.new("TextLabel",main)
+playersCount.Size=UDim2.new(0.9,0,0,40)
+playersCount.Position=UDim2.new(0.05,0,0.05,0)
+playersCount.BackgroundColor3=Color3.fromRGB(30,30,30)
+playersCount.TextScaled=true
+playersCount.TextColor3=Color3.fromRGB(255,255,255)
+playersCount.BackgroundTransparency=0.5
+playersCount.TextStrokeTransparency=0
+playersCount.TextStrokeColor3=Color3.fromRGB(0,0,0)
+playersCount.Font=Enum.Font.GothamBold
+playersCount.Text="👥 عدد المستخدمين الآن: "..#game.Players:GetPlayers().." | 🟢 لاعبين اونلاين"
+local PCC=Instance.new("UICorner",playersCount)
+PCC.CornerRadius=UDim.new(0,12)
+local PCS=Instance.new("UIStroke",playersCount)
+PCS.Thickness=2
+PCS.Color=Color3.fromRGB(0,255,0)
+
+game.Players.PlayerAdded:Connect(function()
+    playersCount.Text="👥 عدد المستخدمين الآن: "..#game.Players:GetPlayers().." | 🟢 لاعبين اونلاين"
+end)
+game.Players.PlayerRemoving:Connect(function()
+    playersCount.Text="👥 عدد المستخدمين الآن: "..#game.Players:GetPlayers().." | 🟢 لاعبين اونلاين"
+end)
+
 local title=Instance.new("TextLabel",main)
 title.Size=UDim2.new(1,0,0,50)
-title.Text="by simba"
+title.Text="🎵 by Simba 🎶"
 title.BackgroundTransparency=1
 title.TextScaled=true
 title.TextColor3=Color3.fromRGB(255,255,0)
@@ -110,14 +186,14 @@ local function newBtn(text,pos,bg)
     return b
 end
 
-local play=newBtn("تشغيل",UDim2.new(0.05,0,0.7,0),Color3.fromRGB(30,120,30))
-local stop=newBtn("توقف",UDim2.new(0.5,0,0.7,0),Color3.fromRGB(120,30,30))
-local auto=newBtn("وضع تلقائي: غير مفعل",UDim2.new(0.05,0,0.82,0),Color3.fromRGB(150,20,20))
-local toggle=newBtn("تفعيل شكل دارك او لايت",UDim2.new(0.5,0,0.82,0),Color3.fromRGB(40,40,40))
-local echoBtn=newBtn("صدي صوت: غير مفعل",UDim2.new(0.05,0,0.9,0),Color3.fromRGB(150,20,20))
-local slowBtn=newBtn("ببطئ: غير مفعل",UDim2.new(0.5,0,0.9,0),Color3.fromRGB(150,20,20))
-local nextBtn=newBtn("تبديل بعد >>",UDim2.new(0.05,0,1.02,0),Color3.fromRGB(20,100,200))
-local prevBtn=newBtn("<< تبديل قبل",UDim2.new(0.5,0,1.02,0),Color3.fromRGB(200,100,20))
+local play=newBtn("▶️ تشغيل",UDim2.new(0.05,0,0.7,0),Color3.fromRGB(30,120,30))
+local stop=newBtn("⏹️ توقف",UDim2.new(0.5,0,0.7,0),Color3.fromRGB(120,30,30))
+local auto=newBtn("⚡ وضع تلقائي: غير مفعل",UDim2.new(0.05,0,0.82,0),Color3.fromRGB(150,20,20))
+local toggle=newBtn("🌙 دارك / ☀️ لايت",UDim2.new(0.5,0,0.82,0),Color3.fromRGB(40,40,40))
+local echoBtn=newBtn("🔊 صدي صوت: غير مفعل",UDim2.new(0.05,0,0.9,0),Color3.fromRGB(150,20,20))
+local slowBtn=newBtn("🐢 ببطئ: غير مفعل",UDim2.new(0.5,0,0.9,0),Color3.fromRGB(150,20,20))
+local nextBtn=newBtn("➡️ تبديل بعد",UDim2.new(0.05,0,1.02,0),Color3.fromRGB(20,100,200))
+local prevBtn=newBtn("⬅️ تبديل قبل",UDim2.new(0.5,0,1.02,0),Color3.fromRGB(200,100,20))
 
 local vis=Instance.new("Frame",main)
 vis.Size=UDim2.new(0.9,0,0,40)
@@ -128,9 +204,13 @@ visCorner.CornerRadius=UDim.new(0,12)
 
 local s=Instance.new("Sound",game.SoundService)
 s.Volume=1
+
 local echo=Instance.new("ReverbSoundEffect",s)
-echo.DecayTime=2
+echo.DecayTime=4
 echo.Density=1
+echo.Diffusion=1
+echo.WetLevel=0.8
+echo.DryLevel=0.2
 echo.Enabled=false
 
 local autoOn=false
@@ -151,13 +231,21 @@ local function load(id)
         name.Text=pd.Name or ""
         img.Image="rbxassetid://"..id
     else
-        name.Text="خطا"
+        name.Text="خطأ"
     end
     return true
 end
 
+local function updateBar()
+    if s.TimeLength>0 then
+        p.Size=UDim2.new(s.TimePosition/s.TimeLength,0,1,0)
+    end
+end
+
 play.MouseButton1Click:Connect(function()
-    if load(txt.Text) then s:Play() end
+    if load(txt.Text) then
+        s:Play()
+    end
 end)
 
 stop.MouseButton1Click:Connect(function()
@@ -166,7 +254,7 @@ end)
 
 auto.MouseButton1Click:Connect(function()
     autoOn=not autoOn
-    auto.Text=autoOn and "وضع تلقائي: مفعل" or "وضع تلقائي: غير مفعل"
+    auto.Text=autoOn and "⚡ وضع تلقائي: مفعل" or "⚡ وضع تلقائي: غير مفعل"
     auto.BackgroundColor3=autoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 
@@ -181,31 +269,30 @@ end)
 echoBtn.MouseButton1Click:Connect(function()
     echoOn=not echoOn
     echo.Enabled=echoOn
-    echoBtn.Text=echoOn and "صدي صوت: مفعل" or "صدي صوت: غير مفعل"
+    echoBtn.Text=echoOn and "🔊 صدي صوت: مفعل" or "🔊 صدي صوت: غير مفعل"
     echoBtn.BackgroundColor3=echoOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 
 slowBtn.MouseButton1Click:Connect(function()
     slowOn=not slowOn
     s.PlaybackSpeed=slowOn and 0.6 or 1
-    slowBtn.Text=slowOn and "ببطئ: مفعل" or "ببطئ: غير مفعل"
+    slowBtn.Text=slowOn and "🐢 ببطئ: مفعل" or "🐢 ببطئ: غير مفعل"
     slowBtn.BackgroundColor3=slowOn and Color3.fromRGB(20,150,20) or Color3.fromRGB(150,20,20)
 end)
 
-nextBtn.MouseButton1Click:Connect(function()
-    index=index+1
-    if index>#playlist then index=1 end
+local function playIndex(i)
+    index=i
     s.SoundId="rbxassetid://"..playlist[index]
+    load(playlist[index])
     s:Play()
-    txt.Text=playlist[index]
+end
+
+nextBtn.MouseButton1Click:Connect(function()
+    playIndex(index+1 > #playlist and 1 or index+1)
 end)
 
 prevBtn.MouseButton1Click:Connect(function()
-    index=index-1
-    if index<1 then index=#playlist end
-    s.SoundId="rbxassetid://"..playlist[index]
-    s:Play()
-    txt.Text=playlist[index]
+    playIndex(index-1 < 1 and #playlist or index-1)
 end)
 
 close.MouseButton1Click:Connect(function()
@@ -219,18 +306,14 @@ reopen.MouseButton1Click:Connect(function()
 end)
 
 game:GetService("RunService").RenderStepped:Connect(function()
-    if s.IsPlaying and s.TimeLength>0 then
-        p.Size=UDim2.new(s.TimePosition/s.TimeLength,0,1,0)
-    else
-        p.Size=UDim2.new(0,0,1,0)
+    updateBar()
+
+    if autoOn then
+        if not s.IsPlaying then
+            playIndex(index+1 > #playlist and 1 or index+1)
+        end
     end
-    if autoOn and not s.IsPlaying then
-        index=index+1
-        if index>#playlist then index=1 end
-        s.SoundId="rbxassetid://"..playlist[index]
-        s:Play()
-        txt.Text=playlist[index]
-    end
+
     for _,v in pairs(vis:GetChildren()) do v:Destroy() end
     for i=1,8 do
         local bar=Instance.new("Frame",vis)
